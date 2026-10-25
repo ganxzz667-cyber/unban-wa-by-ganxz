@@ -1,94 +1,181 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>UNBAN WA BY GANXZ</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UNBAN WA BY GANXZ</title>
 
-<style>
-* {
-  box-sizing: border-box;
-}
+  <style>
+    * {
+      box-sizing: border-box;
+    }
 
-body {
-  margin: 0;
-  padding: 25px;
-  font-family: Arial, sans-serif;
-  color: white;
-  background: linear-gradient(160deg, #063c2e, #07121d);
-}
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: Arial, sans-serif;
+      color: white;
+      background:
+        linear-gradient(rgba(3, 10, 18, 0.78), rgba(3, 10, 18, 0.92)),
+        url("anime.jpg") center / cover fixed,
+        #07111d;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
 
-h1 {
-  text-align: center;
-  letter-spacing: 5px;
-  font-size: 26px;
-}
+    .container {
+      width: 100%;
+      max-width: 430px;
+      padding: 28px 22px;
+      border: 1px solid rgba(0, 255, 170, 0.35);
+      border-radius: 20px;
+      background: rgba(5, 18, 25, 0.88);
+      box-shadow: 0 0 30px rgba(0, 255, 170, 0.12);
+      text-align: center;
+    }
 
-.banner {
-  width: 100%;
-  height: 300px;
-  object-fit: cover;
-  border-radius: 30px;
-}
+    .tag {
+      color: #00ffae;
+      font-size: 12px;
+      letter-spacing: 3px;
+      margin-bottom: 10px;
+    }
 
-.card {
-  margin-top: 25px;
-  padding: 25px;
-  border-radius: 30px;
-  background: #182832;
-  border: 1px solid #35464c;
-}
+    h1 {
+      font-size: 27px;
+      margin: 0 0 12px;
+      text-shadow: 0 0 12px #00ffae55;
+    }
 
-h2 {
-  font-size: 27px;
-}
+    .description {
+      color: #c2d1d5;
+      font-size: 14px;
+      line-height: 1.6;
+      margin-bottom: 22px;
+    }
 
-input {
-  width: 100%;
-  padding: 18px;
-  margin: 10px 0;
-  border-radius: 20px;
-  border: 1px solid #43535b;
-  background: #101e29;
-  color: white;
-  font-size: 16px;
-}
+    input {
+      width: 100%;
+      padding: 14px;
+      margin: 8px 0;
+      border: 1px solid #28434a;
+      border-radius: 10px;
+      outline: none;
+      background: #0b2028;
+      color: white;
+      font-size: 15px;
+    }
 
-button {
-  width: 100%;
-  padding: 18px;
-  margin-top: 15px;
-  border: none;
-  border-radius: 20px;
-  background: #20d58b;
-  color: #06251a;
-  font-size: 17px;
-  font-weight: bold;
-}
-</style>
+    input:focus {
+      border-color: #00ffae;
+    }
+
+    button {
+      width: 100%;
+      padding: 14px;
+      margin-top: 12px;
+      border: none;
+      border-radius: 10px;
+      background: #00ffae;
+      color: #04120e;
+      font-size: 15px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .music-button {
+      margin-top: 18px;
+      background: transparent;
+      color: #00ffae;
+      border: 1px solid #00ffae;
+    }
+
+    .footer {
+      margin-top: 22px;
+      color: #81969c;
+      font-size: 12px;
+    }
+  </style>
 </head>
 
 <body>
+  <main class="container">
+    <div class="tag">OFFICIAL WEBSITE</div>
+    <h1>UNBAN WA BY GANXZ</h1>
 
-<h1>UNBAN WA BY GANXZ</h1>
+    <p class="description">
+      Welcome to UNBAN WA BY GANXZ.<br>
+      Masukkan data kontak untuk melanjutkan.
+    </p>
 
-<div class="card">
-<h2>Unbanned WhatsApp</h2>
+    <form id="contactForm">
+      <input
+        type="email"
+        id="email"
+        placeholder="Masukkan email"
+        required
+      >
 
-<p>Formulir bantuan WhatsApp BY GANXZ</p>
+      <input
+        type="tel"
+        id="phone"
+        placeholder="Masukkan nomor WhatsApp"
+        required
+      >
 
-<input type="email" placeholder="Email kamu">
+      <button type="submit">KIRIM DATA</button>
+    </form>
 
-<input type="tel" placeholder="Nomor WhatsApp">
+    <button class="music-button" id="musicButton">
+      ♫ MUSIC: OFF
+    </button>
 
-<button onclick="window.open(
-'https://www.whatsapp.com/contact/',
-'_blank'
-)">
-HUBUNGI WHATSAPP
-</button>
+    <audio id="backgroundMusic" loop>
+      <source src="music.mp3" type="audio/mpeg">
+    </audio>
 
-</div>
+    <div class="footer">
+      © 2026 UNBAN WA BY GANXZ
+    </div>
+  </main>
 
+  <script>
+    const music = document.getElementById("backgroundMusic");
+    const musicButton = document.getElementById("musicButton");
+
+    musicButton.addEventListener("click", async () => {
+      if (music.paused) {
+        try {
+          await music.play();
+          musicButton.textContent = "♫ MUSIC: ON";
+        } catch (error) {
+          musicButton.textContent = "MUSIK BELUM TERSEDIA";
+        }
+      } else {
+        music.pause();
+        musicButton.textContent = "♫ MUSIC: OFF";
+      }
+    });
+
+    document.getElementById("contactForm").addEventListener("submit", (event) => {
+      event.preventDefault();
+
+      const email = document.getElementById("email").value;
+      const phone = document.getElementById("phone").value;
+
+      const message =
+        "Email: " + email + "\n" +
+        "Nomor WhatsApp: " + phone;
+
+      const whatsappNumber = "628xxxxxxxxxx";
+      const url =
+        "https://wa.me/" + whatsappNumber +
+        "?text=" + encodeURIComponent(message);
+
+      window.open(url, "_blank");
+    });
+  </script>
 </body>
-  </html>
+        </html>
